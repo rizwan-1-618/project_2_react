@@ -24,14 +24,14 @@ const Budget = () => {
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
         <div>
-          <div className="glass-container" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
+          <motion.div whileHover={{ scale: 1.01 }} className="glass-container" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
             <h2 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', marginTop: 0 }}>Update Monthly Target</h2>
             <form onSubmit={handleUpdate} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div>
                 <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)' }}>Target Amount</label>
                 <input 
                   type="number" 
-                  className="glass-input" 
+                  className="glass-input tabular-nums" 
                   value={newBudget}
                   onChange={(e) => setNewBudget(e.target.value)}
                   min="0"
@@ -39,11 +39,11 @@ const Budget = () => {
                   required
                 />
               </div>
-              <button type="submit" className="glass-button">
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" className="glass-button">
                 Save Target Profile
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
         
         <div>

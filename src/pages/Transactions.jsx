@@ -40,13 +40,13 @@ const Transactions = () => {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <h1 style={{ margin: 0 }}>Transactions History</h1>
-        <button className="glass-button" onClick={() => navigate('/transactions/new')}>+ Add New</button>
+        <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="glass-button" onClick={() => navigate('/transactions/new')}>+ Add New</motion.button>
       </div>
 
-      <div className="glass-container" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
+      <motion.div whileHover={{ scale: 1.01 }} className="glass-container" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
         <SearchBar onSearch={setSearchTerm} />
         <Filters filters={filters} setFilters={setFilters} />
-      </div>
+      </motion.div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
         <AnimatePresence>

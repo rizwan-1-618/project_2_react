@@ -50,10 +50,10 @@ const AddTransaction = () => {
     try {
       if (editData) {
         updateTransaction(editData.id, { ...data, date: new Date(data.date).toISOString() });
-        toast.success('Transaction updated successfully');
+        toast.success('Transaction updated');
       } else {
         addTransaction({ ...data, date: new Date(data.date).toISOString() });
-        toast.success('Transaction added successfully');
+        toast.success('Transaction added');
       }
       navigate('/transactions');
     } catch (error) {
@@ -78,7 +78,7 @@ const AddTransaction = () => {
           </label>
           <label style={{ flex: 1 }}>
             <span style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontWeight: 500 }}>Date</span>
-            <input type="date" {...register("date")} className="glass-input" style={{ color: '#000' }} />
+            <input type="date" {...register("date")} className="glass-input tabular-nums" style={{ color: 'var(--text-primary)' }} />
             <p style={{ color: 'var(--danger)', fontSize: '0.8rem', margin: '0.4rem 0 0 0' }}>{errors.date?.message}</p>
           </label>
         </div>
@@ -92,7 +92,7 @@ const AddTransaction = () => {
         <div style={{ display: 'flex', gap: '1rem' }}>
           <div style={{ flex: 1 }}>
             <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontWeight: 500 }}>Amount (₹)</label>
-            <input type="number" step="1" {...register("amount")} className="glass-input" placeholder="0" />
+            <input type="number" step="1" {...register("amount")} className="glass-input tabular-nums" placeholder="0" />
             <p style={{ color: 'var(--danger)', fontSize: '0.8rem', margin: '0.4rem 0 0 0' }}>{errors.amount?.message}</p>
           </div>
           <div style={{ flex: 1 }}>
@@ -111,18 +111,18 @@ const AddTransaction = () => {
           <p style={{ color: 'var(--danger)', fontSize: '0.8rem', margin: '0.4rem 0 0 0' }}>{errors.notes?.message}</p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <motion.div whileHover={{ scale: 1.01 }} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(0,0,0,0.03)', padding: '1rem', borderRadius: '12px', border: '1px solid transparent' }}>
           <input type="checkbox" {...register("recurring")} id="recurring" style={{ width: '1.2rem', height: '1.2rem', accentColor: 'var(--primary-color)' }} />
           <label htmlFor="recurring" style={{ color: 'var(--text-primary)', cursor: 'pointer', userSelect: 'none', fontWeight: 500 }}>Mark as a Recurring Transaction</label>
-        </div>
+        </motion.div>
 
         <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-          <button type="button" onClick={() => navigate(-1)} className="glass-button-secondary" style={{ flex: 1, padding: '0.8rem', borderRadius: '12px', fontWeight: 600 }}>
+          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="button" onClick={() => navigate(-1)} className="glass-button-secondary" style={{ flex: 1, padding: '0.8rem', borderRadius: '12px', fontWeight: 600 }}>
             Cancel
-          </button>
-          <button type="submit" disabled={isSubmitting} className="glass-button" style={{ flex: 2 }}>
+          </motion.button>
+          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={isSubmitting} className="glass-button" style={{ flex: 2 }}>
             {isSubmitting ? 'Saving...' : 'Save Transaction'}
-          </button>
+          </motion.button>
         </div>
       </form>
     </motion.div>

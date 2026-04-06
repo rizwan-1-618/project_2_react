@@ -14,6 +14,7 @@ const TransactionCard = ({ transaction, onEdit, onDelete }) => {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
+      whileHover={{ scale: 1.01 }}
       layout
     >
       <div style={{ flex: 1, overflow: 'hidden' }}>
@@ -30,16 +31,16 @@ const TransactionCard = ({ transaction, onEdit, onDelete }) => {
       </div>
       
       <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.75rem', minWidth: '100px' }}>
-        <h3 style={{ margin: 0, color: type === 'income' ? 'var(--success)' : 'var(--text-primary)' }}>
+        <h3 className="tabular-nums" style={{ margin: 0, color: type === 'income' ? 'var(--success)' : 'var(--text-primary)' }}>
           {type === 'income' ? '+' : '-'}{formatCurrency(amount)}
         </h3>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button onClick={() => onEdit(transaction)} className="glass-button-secondary" style={{ padding: '0.35rem 0.6rem', borderRadius: '8px' }}>
+          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => onEdit(transaction)} className="glass-button-secondary" style={{ padding: '0.35rem 0.6rem' }}>
             <FiEdit size={14} />
-          </button>
-          <button onClick={() => onDelete(id)} className="glass-button-secondary" style={{ padding: '0.35rem 0.6rem', borderRadius: '8px', color: 'var(--danger)' }}>
+          </motion.button>
+          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => onDelete(id)} className="glass-button-secondary" style={{ padding: '0.35rem 0.6rem', color: 'var(--danger)' }}>
             <FiTrash2 size={14} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </motion.div>

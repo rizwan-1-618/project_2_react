@@ -11,20 +11,21 @@ const BudgetCard = ({ budget, totalExpenses, remainingBudget, percentageUsed }) 
       style={{ padding: '1.5rem', marginBottom: '1.5rem' }}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.02 }}
     >
       <h2 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>Monthly Budget Setup</h2>
       
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
         <span style={{ color: 'var(--text-secondary)' }}>Budget Allocation</span>
-        <span style={{ fontWeight: '600' }}>{formatCurrency(budget)}</span>
+        <span className="tabular-nums" style={{ fontWeight: '600' }}>{formatCurrency(budget)}</span>
       </div>
       
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
         <span style={{ color: 'var(--text-secondary)' }}>Total Spent</span>
-        <span style={{ fontWeight: '600' }}>{formatCurrency(totalExpenses)}</span>
+        <span className="tabular-nums" style={{ fontWeight: '600' }}>{formatCurrency(totalExpenses)}</span>
       </div>
       
-      <div style={{ background: 'rgba(255,255,255,0.05)', height: '12px', borderRadius: '6px', overflow: 'hidden', marginBottom: '1rem' }}>
+      <div style={{ background: 'rgba(0,0,0,0.05)', height: '12px', borderRadius: '6px', overflow: 'hidden', marginBottom: '1rem' }}>
         <motion.div 
           style={{ 
             height: '100%', 
@@ -38,7 +39,7 @@ const BudgetCard = ({ budget, totalExpenses, remainingBudget, percentageUsed }) 
         />
       </div>
       
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: isOverBudget ? 'var(--danger)' : 'var(--text-secondary)' }}>
+      <div className="tabular-nums" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: isOverBudget ? 'var(--danger)' : 'var(--text-secondary)' }}>
         <span>{percentageUsed}% Used</span>
         <span style={{ fontWeight: '500' }}>{isOverBudget ? `Over by ${formatCurrency(Math.abs(remainingBudget))}` : `${formatCurrency(remainingBudget)} Remaining`}</span>
       </div>
